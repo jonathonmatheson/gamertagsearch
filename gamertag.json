@@ -6,7 +6,8 @@
         "longitude": -74.0059413, 
         "population": "8405837", 
         "rank": "1", 
-        "state": "UK"
+        "state": "UK",
+        "image": ["https://drunksylvari.neocities.org/img/drunkdith.gif"]
     }, 
     {
         "city": "New York", 
