@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead Gamertag Search</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🎮" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Trigger/Open The Modal -->
+<button id="myBtn">About</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+     <div class="about">
+    <div class="fullBio">
+      <span class="close">&times;</span>
+      <h3 class="gamerTag">Aither Uk</h3>
+        <div class="bioContain">
+          <div class="aitherPic">
+            <img style="width:100px;height:100px;" src="https://drunksylvari.neocities.org/img/jpg/AitherUk.png"/>
+          </div>
+          <div class="stats">
+            <p>Rep: ☆☆☆☆☆</p>
+            <p>Gamerscore: 3850</p>
+            <p>Zone: None</p>
+          </div>
+        </div>
+    </div>
+    
+    <div class="messageBox">
+      <p class="what">A small project where I message my old Xbox Live friends on an Xbox 360 to see if anyone's still out there.</p>
+      <h3>✉️ Message Text</h3>
+      <p><em>Hi all! Just got back into my xbox account ive been locked out of for nearly a decade lol hope youre all good! feel free to say hi or join me for Halo sometime :) ~Jon</em></p>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+
+ 
+  <form class="search-form">
+    <input type="text" class="search" placeholder="Gamertag">
+    <ul class="suggestions">
+      <li>Start typing for a Gamertag</li>
+      <li>or hit backspace to view all</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://raw.githubusercontent.com/jonathonmatheson/gamertagsearch/refs/heads/main/gamertag.json';
+const cities = [];
+fetch(endpoint)
+  .then(blob => blob.json())
+  .then(data => cities.push(...data));
+
+function findMatches(wordToMatch, cities) {
+  return cities.filter(place => {
+    // here we need to figure out if the city or state matches what was searched
+    const regex = new RegExp(wordToMatch, 'gi');
+    return place.city.match(regex) || place.state.match(regex)
+  });
+}
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function displayMatches() {
+  const matchArray = findMatches(this.value, cities);
+  const html = matchArray.map(place => {
+    const regex = new RegExp(this.value, 'gi');
+    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+    const rankName = place.rank.replace(regex, `<span class="hl">${this.value}</span>`);
+    return `
+      <li>
+        <span class="pic"><img style="width:50px;height:50px;border-radius:100%;" src="${(place.image)}"/></span>
+        <span class="name">${cityName}</span>
+        <span class="population">Messaged: ${(place.population)}</span>
+        <span class="reply">Replied: ${(place.reply)}</span>
+      </li>
+    `;
+  }).join('');
+  suggestions.innerHTML = html;
+}
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+
+
+// modal
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+  </body>
+</html>
