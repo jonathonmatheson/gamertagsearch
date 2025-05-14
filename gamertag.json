@@ -143,17 +143,7 @@
         "state": "UK",
         "image": ["https://drunksylvari.neocities.org/img/jpg/JumpierBus.jpg"]
     },
-        {
-        "city": "JumpierBus", 
-        "growth_from_2000_to_2013": "100%", 
-        "latitude": 40.7127837, 
-        "longitude": -74.0059413, 
-        "population": "❌",
-        "reply": "❌" ,
-        "rank": "1", 
-        "state": "UK",
-        "image": ["https://drunksylvari.neocities.org/img/jpg/JumpierBus.jpg"]
-    },
+
         {
         "city": "lich3050", 
         "growth_from_2000_to_2013": "100%", 
@@ -165,28 +155,8 @@
         "state": "UK",
         "image": ["https://drunksylvari.neocities.org/img/jpg/lich3050.jpg"]
     },
-        {
-        "city": "lich3050", 
-        "growth_from_2000_to_2013": "100%", 
-        "latitude": 40.7127837, 
-        "longitude": -74.0059413, 
-        "population": "❌",
-        "reply": "❌" ,
-        "rank": "1", 
-        "state": "UK",
-        "image": ["https://drunksylvari.neocities.org/img/jpg/lich3050.jpg"]
-    },
-        {
-        "city": "marxkadaj", 
-        "growth_from_2000_to_2013": "100%", 
-        "latitude": 40.7127837, 
-        "longitude": -74.0059413, 
-        "population": "❌",
-        "reply": "❌" ,
-        "rank": "1", 
-        "state": "UK",
-        "image": ["https://drunksylvari.neocities.org/img/jpg/marxkadaj.jpg"]
-    },
+
+
         {
         "city": "PhychoAcoustic", 
         "growth_from_2000_to_2013": "100%", 
